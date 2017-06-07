@@ -14,6 +14,8 @@ function ImageSlide() {
 
     this.markup = null;
 
+    this.onComplete = null;
+
     this.configure = function(data) {
         this.src = data.src;
     };

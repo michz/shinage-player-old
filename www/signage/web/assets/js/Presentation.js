@@ -57,7 +57,10 @@ function Presentation() {
         }
         this.showSlide(nextId);
         var slide = this.getSlide(nextId);
-        setTimeout($.proxy(this.nextSlide, this), slide.duration);
+        slide.onComplete = $.proxy(this.nextSlide, this);
+        if (slide.duration > 0) {
+            setTimeout($.proxy(this.nextSlide, this), slide.duration);
+        }
     };
 
     this.hideSlide = function() {

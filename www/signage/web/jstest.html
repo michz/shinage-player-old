@@ -15,6 +15,7 @@
 
     <script src="assets/js/lib/jquery-3.2.1.js"></script>
     <script src="assets/js/ImageSlide.js"></script>
+    <script src="assets/js/VideoSlide.js"></script>
     <script src="assets/js/SlideFactory.js"></script>
     <script src="assets/js/Presentation.js"></script>
     <script>
@@ -40,9 +41,17 @@
                 'transition': 'none',
                 'src': 'https://placehold.it/300x400'
             };
+            testSlide4 = {
+                'type': 'Video',
+                'title': 'Test-Slide 4',
+                'duration': 0,
+                'transition': 'none',
+                'src': 'https://www.w3schools.com/html/mov_bbb.mp4',
+                'mime': 'video/mp4'
+            };
 
             presentationData = {
-                'slides': [testSlide1, testSlide2, testSlide3],
+                'slides': [testSlide4, testSlide1, testSlide2, testSlide3],
                 'settings': {
                     'backgroundColor': '#000'
                 }
