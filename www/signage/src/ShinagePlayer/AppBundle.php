@@ -1,6 +1,7 @@
 <?php
 
-namespace AppBundle;
+#namespace AppBundle;
+namespace mztx\ShinagePlayer;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
