@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/player.css" type="text/css">
+</head>
+<body>
+    <div id="frame">
+        <div id="canvas">
+
+        </div>
+    </div>
+
+    <script src="assets/js/lib/jquery-3.2.1.js"></script>
+    <script src="assets/js/ImageSlide.js"></script>
+    <script src="assets/js/Presentation.js"></script>
+    <script>
+        $(document).ready(function() {
+            testSlide1 = {
+                'type': 'Image',
+                'title': 'Test-Slide 1',
+                'duration': 5000,
+                'transition': 'none',
+                'src': 'https://placehold.it/800x600'
+            };
+            testSlide2 = {
+                'type': 'Image',
+                'title': 'Test-Slide 2',
+                'duration': 2500,
+                'transition': 'none',
+                'src': 'https://placehold.it/960x600'
+            };
+            testSlide3 = {
+                'type': 'Image',
+                'title': 'Test-Slide 3',
+                'duration': 1000,
+                'transition': 'none',
+                'src': 'https://placehold.it/300x400'
+            };
+            slides = [testSlide1, testSlide2, testSlide3];
+
+            var pres = new Presentation();
+            pres.container = $('#canvas');
+            pres.loadSlides(slides);
+        });
+
+    </script>
+</body>
+</html>

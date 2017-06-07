@@ -1,0 +1,26 @@
+body {
+    background: #000;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    text-align: center;
+    /* display: none; */
+}
+
+.slide.image img {
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* display: none; */
+}
