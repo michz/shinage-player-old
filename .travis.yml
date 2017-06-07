@@ -1,0 +1,11 @@
+language: php
+
+php:
+  - '7.0'
+
+
+install:
+  - cd www/ && composer install --optimize-autoloader
+
+
+
