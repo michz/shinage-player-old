@@ -14,9 +14,13 @@ function ImageSlide() {
 
     this.markup = null;
 
-    this.init = function (container) {
+    this.configure = function(data) {
+        this.src = data.src;
+    };
+
+    this.init = function () {
         this.markup = $(this.getMarkup());
-        $(container).append(this.markup);
+        return this.markup;
     };
 
     this.getMarkup = function() {

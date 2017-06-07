@@ -23,17 +23,13 @@ function Presentation() {
     this.loadSlides = function(rawSlides) {
         this.slides = [];
         this.slideCount = 0;
+        var factory = new SlideFactory();
         for (var i = 0; i < rawSlides.length; i++) {
             var rawSlide = rawSlides[i];
-            var slide = {};
-            if (rawSlide.type == 'Image') {
-                slide = new ImageSlide();
-            }
-            slide.duration = rawSlide.duration;
-            slide.src = rawSlide.src;
-            slide.title = rawSlide.title;
-            slide.transition = rawSlide.transition;
-            slide.init(this.container);
+            var slide = factory.createSlide(rawSlide);
+
+            var markup = slide.init();
+            this.container.append(markup);
             this.slides.push(slide);
             this.slideCount += 1;
         }
