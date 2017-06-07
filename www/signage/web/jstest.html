@@ -21,7 +21,7 @@
             testSlide1 = {
                 'type': 'Image',
                 'title': 'Test-Slide 1',
-                'duration': 5000,
+                'duration': 4000,
                 'transition': 'none',
                 'src': 'https://placehold.it/800x600'
             };
@@ -39,11 +39,16 @@
                 'transition': 'none',
                 'src': 'https://placehold.it/300x400'
             };
-            slides = [testSlide1, testSlide2, testSlide3];
 
+            presentationData = {
+                'slides': [testSlide1, testSlide2, testSlide3],
+                'settings': {
+                    'backgroundColor': '#000'
+                }
+            };
             var pres = new Presentation();
             pres.container = $('#canvas');
-            pres.loadSlides(slides);
+            pres.load(presentationData);
         });
 
     </script>

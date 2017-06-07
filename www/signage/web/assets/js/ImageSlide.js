@@ -12,12 +12,22 @@ function ImageSlide() {
     this.transition = '';
     this.src = '';
 
+    this.markup = null;
+
     this.init = function (container) {
-        $(container).append(this.getMarkup());
-        console.log(this.getMarkup());
+        this.markup = $(this.getMarkup());
+        $(container).append(this.markup);
     };
 
     this.getMarkup = function() {
         return '<div class="slide image"><img src="' + this.src + '"></div>';
+    };
+
+    this.show = function() {
+        this.markup.css('opacity', 1);
+        //this.markup.parent().append(this.markup); // bring to front
+    };
+    this.hide = function() {
+        this.markup.css('opacity', 0);
     };
 }
