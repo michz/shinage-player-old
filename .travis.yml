@@ -5,7 +5,7 @@ php:
 
 
 install:
-  - cd www/ && composer install --optimize-autoloader
+  - cd www/signage/ && composer install --optimize-autoloader
 
 
 
