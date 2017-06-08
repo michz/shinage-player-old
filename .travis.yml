@@ -9,7 +9,7 @@ script:
   - true
 
 after_success:
-  - zip -r shinage-player-release.zip ./www/signage/
+  - cd $TRAVIS_BUILD_DIR && zip -r shinage-player-release.zip ./www/
 
 deploy:
   provider: releases
