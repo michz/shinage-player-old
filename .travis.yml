@@ -10,5 +10,9 @@ install:
 script:
   - true
 
+after_success:
+  - zip -r shinage-player-release.zip ./signage/
+  - zip -r shinage-diagnostics-release.zip ./diagnostics/
+
 
 
