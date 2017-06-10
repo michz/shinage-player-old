@@ -86,6 +86,12 @@ function Presentation() {
         currentSlide.hide();
     };
 
+    this.pause = function() {
+        if (this.currentNextSlideHandler != null) {
+            clearTimeout(this.currentNextSlideHandler);
+        }
+    };
+
     this.getSlide = function(id) {
         return this.slides[id];
     };

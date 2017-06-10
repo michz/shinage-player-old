@@ -15,6 +15,8 @@ function Keyboard(presentation, options) {
             this.keyRight();
         } else if (e.which == 37) {
             this.keyLeft();
+        } else if (e.which == 27) {
+            this.keyEsc();
         }
     }, this));
 
@@ -24,5 +26,8 @@ function Keyboard(presentation, options) {
     };
     this.keyLeft = function() {
         this.presentation.prevSlide();
+    };
+    this.keyEsc = function() {
+        this.presentation.pause();
     };
 }
