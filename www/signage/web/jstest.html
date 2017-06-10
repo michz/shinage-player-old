@@ -14,6 +14,7 @@
     </div>
 
     <script src="assets/js/lib/jquery-3.2.1.js"></script>
+    <script src="assets/js/Keyboard.js"></script>
     <script src="assets/js/ImageSlide.js"></script>
     <script src="assets/js/VideoSlide.js"></script>
     <script src="assets/js/SlideFactory.js"></script>
@@ -23,14 +24,14 @@
             testSlide1 = {
                 'type': 'Image',
                 'title': 'Test-Slide 1',
-                'duration': 4000,
+                'duration': 10000,
                 'transition': 'none',
                 'src': 'https://placehold.it/800x600'
             };
             testSlide2 = {
                 'type': 'Image',
                 'title': 'Test-Slide 2',
-                'duration': 2500,
+                'duration': 25000,
                 'transition': 'none',
                 'src': 'https://placehold.it/960x600'
             };
@@ -60,6 +61,8 @@
             var pres = new Presentation();
             pres.container = $('#canvas');
             pres.load(presentationData);
+
+            var key = new Keyboard(pres);
         });
 
     </script>

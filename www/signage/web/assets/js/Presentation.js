@@ -10,6 +10,7 @@ function Presentation() {
     this.slides = [];
     this.slideCount = 0;
     this.currentSlideId = -1;
+    this.currentNextSlideHandler = null;
 
     this.load = function (data) {
         if (data.slides != undefined) {
@@ -55,11 +56,27 @@ function Presentation() {
         if (nextId >= this.slideCount) {
             nextId = 0;
         }
-        this.showSlide(nextId);
-        var slide = this.getSlide(nextId);
+        this.gotoSlide(nextId);
+    };
+    this.prevSlide = function() {
+        var nextId = this.currentSlideId - 1;
+        if (nextId < 0) {
+            nextId = this.slideCount - 1;
+        }
+        this.gotoSlide(nextId);
+    };
+
+    this.gotoSlide = function(id) {
+        // clear timeout, if set
+        if (this.currentNextSlideHandler != null) {
+            clearTimeout(this.currentNextSlideHandler);
+        }
+
+        this.showSlide(id);
+        var slide = this.getSlide(id);
         slide.onComplete = $.proxy(this.nextSlide, this);
         if (slide.duration > 0) {
-            setTimeout($.proxy(this.nextSlide, this), slide.duration);
+            this.currentNextSlideHandler = setTimeout($.proxy(this.nextSlide, this), slide.duration);
         }
     };
 
