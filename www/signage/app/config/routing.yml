@@ -1,3 +1,7 @@
 shinageplayer:
     resource: '@ShinagePlayerBundle/Resources/config/routing.yml'
 
+shinagediagnostics:
+    resource: '@ShinageDiagnosticsBundle/Resources/config/routing.yml'
+    prefix: /diagnostics
+
