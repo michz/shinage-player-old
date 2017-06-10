@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             #new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             #new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             #new AppBundle\AppBundle(),
-            new \mztx\ShinagePlayer\AppBundle(),
+            new \mztx\ShinagePlayerBundle\ShinagePlayerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

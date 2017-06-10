@@ -1,0 +1,3 @@
+shinageplayer:
+    resource: '@ShinagePlayerBundle/Resources/config/routing.yml'
+

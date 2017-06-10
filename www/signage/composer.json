@@ -13,7 +13,7 @@
     "symfony/yaml": "@stable"
   },
   "autoload": {
-    "psr-4": { "mztx\\ShinagePlayer\\": "src/ShinagePlayer/", "": "src/" },
+    "psr-4": { "mztx\\ShinagePlayerBundle\\": "src/ShinagePlayerBundle/", "": "src/" },
     "classmap": [ "app/AppKernel.php" ]
   }
 }

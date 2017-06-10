@@ -1,2 +1,9 @@
+#shinageplayer:
+#    resource: '@ShinagePlayer/Resources/config/routing.yml'
+
 framework:
     secret: "klsdfgisezo75ctzno4789zto8e7sfmcsx"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+

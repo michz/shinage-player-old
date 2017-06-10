@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/player.css" type="text/css">
+</head>
+<body>
+    <div id="frame">
+        <div id="canvas">
+        </div>
+    </div>
+
+    <script src="assets/js/lib/jquery-3.2.1.js"></script>
+    <script src="assets/js/Keyboard.js"></script>
+    <script src="assets/js/ImageSlide.js"></script>
+    <script src="assets/js/VideoSlide.js"></script>
+    <script src="assets/js/SlideFactory.js"></script>
+    <script src="assets/js/Presentation.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax('/app.php/test', {
+                method: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    var pres = new Presentation();
+                    var key = new Keyboard(pres);
+
+                    console.log(data);
+                    pres.container = $('#canvas');
+                    pres.load(data);
+
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
