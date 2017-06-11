@@ -22,12 +22,18 @@ function Keyboard(presentation, options) {
 
 
     this.keyRight = function() {
-        this.presentation.nextSlide();
+        if (this.presentation) {
+            this.presentation.nextSlide();
+        }
     };
     this.keyLeft = function() {
-        this.presentation.prevSlide();
+        if (this.presentation) {
+            this.presentation.prevSlide();
+        }
     };
     this.keyEsc = function() {
-        this.presentation.pause();
+        if (this.presentation) {
+            this.presentation.pause();
+        }
     };
 }

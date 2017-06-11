@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             #new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             #new AppBundle\AppBundle(),
             new \mztx\ShinagePlayerBundle\ShinagePlayerBundle(),
+            new \mztx\ShinageDiagnosticsBundle\ShinageDiagnosticsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

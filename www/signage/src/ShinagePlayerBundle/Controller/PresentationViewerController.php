@@ -1,6 +1,7 @@
 <?php
 namespace mztx\ShinagePlayerBundle\Controller;
 
+use mztx\ShinagePlayerBundle\Model\CurrentPresentation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -9,7 +10,10 @@ class PresentationViewerController extends Controller
 
     public function currentAction()
     {
-        return new Response('Geht!');
+        $current = new CurrentPresentation();
+        $current->lastModified = 102;
+        $current->url = '/test';
+        return new Response(json_encode($current));
     }
 
     public function testAction()
