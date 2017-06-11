@@ -18,23 +18,14 @@
     <script src="assets/js/VideoSlide.js"></script>
     <script src="assets/js/SlideFactory.js"></script>
     <script src="assets/js/Presentation.js"></script>
+    <script src="assets/js/PresentationLoader.js"></script>
     <script>
+        keyboardHandler = new Keyboard(null, {});
+        presentationLoader = new PresentationLoader();
+
         $(document).ready(function() {
-            $.ajax('/app.php/test', {
-                method: 'get',
-                dataType: 'json',
-                success: function(data) {
-                    var pres = new Presentation();
-                    var key = new Keyboard(pres);
-
-                    console.log(data);
-                    pres.container = $('#canvas');
-                    pres.load(data);
-
-                }
-            });
+            presentationLoader.check();
         });
-
     </script>
 </body>
 </html>
