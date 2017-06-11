@@ -1,0 +1,6 @@
+services:
+    shinage.player.guid_creator:
+        class: mztx\ShinagePlayerBundle\Service\GuidCreator
+#        arguments:
+#            em: "@doctrine.orm.entity_manager"
+#            tokenStorage: "@security.token_storage"

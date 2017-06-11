@@ -1,4 +1,4 @@
-index:
+shinage.diagnostics.index:
     path:     /
     defaults: { _controller: ShinageDiagnosticsBundle:Index:index }
 
