@@ -90,7 +90,7 @@ class PresentationViewerController extends Controller
 
         $presentation = new \stdClass();
         $presentation->slides = [
-            $slide1, $slide2, $slide3, $slide4
+            $slide1, $slide2, $slide3/*, $slide4*/
         ];
         $presentation->settings = new \stdClass();
         $presentation->settings->backgroundColor = '#000';
