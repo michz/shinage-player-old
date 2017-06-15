@@ -30,7 +30,7 @@ class LocalScheduler
         if (empty($localPresentations)) {
             $current = new CurrentPresentation();
             $current->lastModified = 123;
-            $current->url = '/splash';
+            $current->url = '/test';
         } else {
             $current = $localPresentations[0];
         }
