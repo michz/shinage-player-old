@@ -1,0 +1,23 @@
+{
+  "name": "mztx/shinage-player",
+  "license": "MIT",
+  "type": "project",
+  "description": "A php based in-browser-running player for shinage digital signage applications.",
+  "require": {
+    "php": ">=7.0",
+    "symfony/console": "@stable",
+    "symfony/framework-bundle": "@stable",
+    "symfony/http-kernel": "@stable",
+    "symfony/routing": "@stable",
+    "symfony/templating": "@stable",
+    "symfony/yaml": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "mztx\\ShinagePlayerBundle\\": "src/ShinagePlayerBundle/",
+      "mztx\\ShinageDiagnosticsBundle\\": "src/ShinageDiagnosticsBundle/",
+      "": "src/"
+    },
+    "classmap": [ "app/AppKernel.php" ]
+  }
+}

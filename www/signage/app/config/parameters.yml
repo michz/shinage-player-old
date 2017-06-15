@@ -1,0 +1,3 @@
+parameters:
+    persistence.directory: "/p"
+    persistence.guid_file: "guid.txt"

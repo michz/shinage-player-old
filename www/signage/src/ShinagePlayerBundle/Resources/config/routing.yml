@@ -1,0 +1,11 @@
+shinage.player.index:
+    path:     /
+    defaults: { _controller: ShinagePlayerBundle:Index:index }
+
+shinage.player.current:
+    path:     /current
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:current }
+
+shinage.player.test:
+    path:     /test
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:test }

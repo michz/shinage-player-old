@@ -1,0 +1,21 @@
+language: php
+php:
+  - '7.0'
+
+install:
+  - cd www/signage/ && composer install --optimize-autoloader
+
+script:
+  - true
+
+after_success:
+  - cd $TRAVIS_BUILD_DIR && zip -r shinage-player-release.zip ./www/
+
+deploy:
+  provider: releases
+  api_key:
+    secure: JYMQO+8xu9Lxb5nmBBntaFcVQ5xNQ1791cu2k4EnvES3nrPvn26aoGfeycjqGihY6fBD3SktF2+zz6v3h+823gqLCtZA7snzQYszBcXKKJPjoBd0WdJ+ZYxeP7bbVyM60QQzr9k+HwxtTFF4yQKB/xEbS71JwEG6+uFP1n80OcWQbixhqwnrchcSrvAIjfdYMPyExHWdedV7PMefh3ellyONwPAnrzgvbgjNHd+ldmY8FHHrDYG3el+oMuISL0F+cK+ODvpstwfZRn8FIg9T7+TvYSW9F7Wh5PDk/3SdUAvor3StXaJ80EA6nBcZnQCooswvt8uUk26ikWfEu1Ep8qKxrksIJn/WRGn112m8aZkHZ6AgfMWV/xCHugZYCkA9V8cDqRc+TsMY49SGdSpwYKgfzkcGLv2CCf9jLydiksaDb0ixkCxgjyJfLtK7/wLpMV3K+f/RTrYu6EiSTveYaO/TBGO8TeFAFmRw0BP6VPeHkBAbn1lWZYRdjz/MmEIj6fpK92/ijPjXRwRU5Lo2ZU2RtW2lDWI8O2h2ngj9Ai+t+bYSAyPDbO5O1p/xMgUsSHw0+ls7ZWiCaMFhJ5/hLDRgqvVN53HuBWleu+Dm3U+Pz/aSU43uzwpOVTw4yHPLS5Fks19qMij3pOZ+mi6QwZoAS8o3M2A1qKCelXUe/hU=
+  file: shinage-player-release.zip
+  skip_cleanup: true
+  on:
+    tags: on
