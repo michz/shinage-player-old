@@ -12,8 +12,27 @@ class PresentationViewerController extends Controller
     {
         $current = new CurrentPresentation();
         $current->lastModified = 102;
-        $current->url = '/test';
+        $current->url = '/splash';
         return new Response(json_encode($current));
+    }
+
+    public function splashAction()
+    {
+        $slide1 = new \stdClass();
+        $slide1->type = 'Image';
+        $slide1->title = 'Shinage';
+        $slide1->duration = 0;
+        $slide1->transition = 'none';
+        $slide1->src = 'http://localhost/assets/img/logo-base-dark.png';
+
+        $presentation = new \stdClass();
+        $presentation->slides = [
+            $slide1
+        ];
+        $presentation->settings = new \stdClass();
+        $presentation->settings->backgroundColor = '#000';
+
+        return new Response(json_encode($presentation));
     }
 
     public function testAction()

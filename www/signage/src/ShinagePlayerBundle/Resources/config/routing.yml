@@ -6,6 +6,10 @@ shinage.player.current:
     path:     /current
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:current }
 
+shinage.player.splash:
+    path:     /splash
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:splash }
+
 shinage.player.test:
     path:     /test
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:test }
