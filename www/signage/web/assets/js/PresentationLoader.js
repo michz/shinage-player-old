@@ -38,6 +38,8 @@ function PresentationLoader() {
                 keyboardHandler.presentation = pres;
                 pres.container = $('#canvas');
                 pres.load(data);
+                //TODO: Warten bis Bilder geladen sind?
+                // http://stackoverflow.com/a/5623965
             }, this)
         });
     };
