@@ -7,9 +7,17 @@ shinage.player.current:
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:current }
 
 shinage.player.splash:
-    path:     /splash
+    path:     /p/splash
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:splash }
 
 shinage.player.test:
-    path:     /test
+    path:     /p/test
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:test }
+
+shinage.player.presentation.local:
+    path:     /p/local/{name}
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:local }
+
+shinage.player.file.local:
+    path:     /f/local/{presentation}/{file}
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:localFile }

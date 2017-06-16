@@ -1,8 +1,11 @@
 <?php
 namespace mztx\ShinagePlayerBundle\Controller;
 
-use mztx\ShinagePlayerBundle\Model\CurrentPresentation;
+use mztx\ShinagePlayerBundle\Entity\CurrentPresentation;
+use mztx\ShinagePlayerBundle\Service\LocalPresentationLoader;
+use mztx\ShinagePlayerBundle\Service\LocalScheduler;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class PresentationViewerController extends Controller
@@ -10,9 +13,10 @@ class PresentationViewerController extends Controller
 
     public function currentAction()
     {
-        $current = new CurrentPresentation();
-        $current->lastModified = 102;
-        $current->url = '/splash';
+        /** @var LocalScheduler $scheduler */
+        $scheduler = $this->container->get('shinage.player.local_scheduler');
+        /** @var CurrentPresentation $current */
+        $current = $scheduler->getCurrentPresentation();
         return new Response(json_encode($current));
     }
 
@@ -33,6 +37,24 @@ class PresentationViewerController extends Controller
         $presentation->settings->backgroundColor = '#000';
 
         return new Response(json_encode($presentation));
+    }
+
+    public function localAction($name)
+    {
+        /** @var LocalPresentationLoader $loader */
+        $loader = $this->get('shinage.player.local_presentation_loader');
+        $presentation = $loader->getByName($name);
+        return new Response(json_encode($presentation));
+    }
+
+    public function localFileAction($presentation, $file)
+    {
+        /** @var LocalPresentationLoader $loader */
+        $loader = $this->get('shinage.player.local_presentation_loader');
+        $mime = '';
+        $data = $loader->getFileByName($presentation, $file, $mime);
+
+        return new Response($data, 200, ['Content-type' => $mime]);
     }
 
     public function testAction()

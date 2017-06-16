@@ -1,6 +1,21 @@
 services:
-    shinage.player.guid_creator:
-        class: mztx\ShinagePlayerBundle\Service\GuidCreator
-#        arguments:
-#            em: "@doctrine.orm.entity_manager"
-#            tokenStorage: "@security.token_storage"
+  shinage.player.guid_creator:
+    class: mztx\ShinagePlayerBundle\Service\GuidCreator
+
+  shinage.player.local_scheduler:
+    class: mztx\ShinagePlayerBundle\Service\LocalScheduler
+    arguments:
+      $localProvider: "@shinage.player.local_presentation_provider"
+
+  shinage.player.local_presentation_loader:
+    class: mztx\ShinagePlayerBundle\Service\LocalPresentationLoader
+    arguments:
+      $kernel: "@kernel"
+      $basePath: "/tmp/usb"
+
+  shinage.player.local_presentation_provider:
+    class: mztx\ShinagePlayerBundle\Service\LocalPresentationProvider
+    arguments:
+      $kernel: "@kernel"
+      $basePath: "/tmp/usb"
+      $presentationLoader: "@shinage.player.local_presentation_loader"
