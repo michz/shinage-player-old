@@ -1,6 +1,6 @@
 <?php
 
-namespace mztx\ShinagePlayerBundle\Model;
+namespace mztx\ShinagePlayerBundle\Entity;
 
 class CurrentPresentation
 {
