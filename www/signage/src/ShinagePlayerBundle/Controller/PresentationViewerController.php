@@ -5,13 +5,13 @@ use mztx\ShinagePlayerBundle\Entity\CurrentPresentation;
 use mztx\ShinagePlayerBundle\Service\LocalPresentationLoader;
 use mztx\ShinagePlayerBundle\Service\LocalScheduler;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PresentationViewerController extends Controller
 {
 
-    public function currentAction()
+    public function currentAction(Request $request)
     {
         /** @var LocalScheduler $scheduler */
         $scheduler = $this->container->get('shinage.player.local_scheduler');
@@ -20,14 +20,14 @@ class PresentationViewerController extends Controller
         return new Response(json_encode($current));
     }
 
-    public function splashAction()
+    public function splashAction(Request $request)
     {
         $slide1 = new \stdClass();
         $slide1->type = 'Image';
         $slide1->title = 'Shinage';
         $slide1->duration = 0;
         $slide1->transition = 'none';
-        $slide1->src = 'http://localhost/assets/img/logo-base-dark.png';
+        $slide1->src = $request->getSchemeAndHttpHost().'/assets/img/logo-base-dark.png';
 
         $presentation = new \stdClass();
         $presentation->slides = [
@@ -39,7 +39,7 @@ class PresentationViewerController extends Controller
         return new Response(json_encode($presentation));
     }
 
-    public function localAction($name)
+    public function localAction(Request $request, $name)
     {
         /** @var LocalPresentationLoader $loader */
         $loader = $this->get('shinage.player.local_presentation_loader');
@@ -47,7 +47,7 @@ class PresentationViewerController extends Controller
         return new Response(json_encode($presentation));
     }
 
-    public function localFileAction($presentation, $file)
+    public function localFileAction(Request $request, $presentation, $file)
     {
         /** @var LocalPresentationLoader $loader */
         $loader = $this->get('shinage.player.local_presentation_loader');
@@ -57,7 +57,7 @@ class PresentationViewerController extends Controller
         return new Response($data, 200, ['Content-type' => $mime]);
     }
 
-    public function testAction()
+    public function testAction(Request $request)
     {
         $slide1 = new \stdClass();
         $slide1->type = 'Image';
