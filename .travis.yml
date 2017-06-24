@@ -6,7 +6,7 @@ install:
   - cd www/signage/ && composer install --optimize-autoloader
 
 script:
-  - true
+  - vendor/bin/phpunit
 
 after_success:
   - cd $TRAVIS_BUILD_DIR && zip -r shinage-player-release.zip ./www/
