@@ -6,6 +6,8 @@ framework:
 
 shinage_player:
   uuid: "b13eaa78-e7af-4445-b725-3d535105bad7"
+  local:
+    path: "/mnt/usb"
   remote:
     host: "10.251.0.101"
     protocol: "https"

@@ -18,7 +18,7 @@ class LocalPresentationProvider
     protected $kernel;
 
     /** @var string */
-    protected $basePath;
+    protected $basePath = '';
 
     /** @var LocalPresentationLoader */
     protected $presentationLoader;

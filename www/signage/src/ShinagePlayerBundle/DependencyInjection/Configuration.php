@@ -15,6 +15,11 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('uuid')->end()
+                ->arrayNode('local')
+                    ->children()
+                        ->scalarNode('path')->end()
+                    ->end() // children of local
+                ->end() // local
                 ->arrayNode('remote')
                     ->children()
                         ->scalarNode('host')->end()
