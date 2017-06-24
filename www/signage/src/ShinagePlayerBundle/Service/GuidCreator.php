@@ -6,7 +6,7 @@ class GuidCreator
 {
     public function createGUID()
     {
-        return sprintf(
+        return strtolower(sprintf(
             '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
             mt_rand(0, 0xffff),
             mt_rand(0, 0xffff),
@@ -16,6 +16,6 @@ class GuidCreator
             mt_rand(0, 0xffff),
             mt_rand(0, 0xffff),
             mt_rand(0, 0xffff)
-        );
+        ));
     }
 }
