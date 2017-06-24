@@ -2,6 +2,19 @@ services:
   shinage.player.guid_creator:
     class: mztx\ShinagePlayerBundle\Service\GuidCreator
 
+  shinage.player.url_builder:
+    class: mztx\ShinagePlayerBundle\Service\UrlBuilder
+    arguments:
+      $protocol: "%shinage.player.remote.protocol%"
+      $host: "%shinage.player.remote.host%"
+      $basePath: "%shinage.player.remote.base_path%"
+      $controllers: "%shinage.player.remote.controllers%"
+
+  shinage.player.remote.heartbeat:
+    class: mztx\ShinagePlayerBundle\Service\Heartbeat
+    arguments:
+      $urlBuilder: "@shinage.player.url_builder"
+
   shinage.player.local_scheduler:
     class: mztx\ShinagePlayerBundle\Service\LocalScheduler
     arguments:

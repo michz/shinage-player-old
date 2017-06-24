@@ -4,6 +4,7 @@ namespace mztx\ShinagePlayerBundle\Controller;
 use mztx\ShinagePlayerBundle\Entity\CurrentPresentation;
 use mztx\ShinagePlayerBundle\Service\LocalPresentationLoader;
 use mztx\ShinagePlayerBundle\Service\LocalScheduler;
+use mztx\ShinagePlayerBundle\Service\UrlBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
