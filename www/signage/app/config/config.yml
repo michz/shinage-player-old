@@ -7,13 +7,15 @@ framework:
 shinage_player:
   uuid: "b13eaa78-e7af-4445-b725-3d535105bad7"
   local:
+    enabled: true
     path: "/mnt/usb"
   remote:
+    enabled: true
     host: "10.251.0.101"
-    protocol: "https"
+    protocol: "http"
     base_path: "/"
     controller:
-      heartbeat: "/screen-remote/heartbeat"
+      heartbeat: "/screen-remote/heartbeat/%s"
       current: "/screen-remote/client/%s"
       asset: "/screen-remote/client-file/%s"
       screenshot: "/screen-remote/upload-screenshot"

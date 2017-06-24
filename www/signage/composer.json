@@ -9,7 +9,9 @@
     "symfony/console": "@stable",
     "symfony/framework-bundle": "@stable",
     "symfony/http-kernel": "@stable",
+    "symfony/property-access": "@stable",
     "symfony/routing": "@stable",
+    "symfony/serializer": "@stable",
     "symfony/templating": "@stable",
     "symfony/yaml": "@stable"
   },

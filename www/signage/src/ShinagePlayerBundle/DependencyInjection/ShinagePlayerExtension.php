@@ -26,5 +26,6 @@ class ShinagePlayerExtension extends ConfigurableExtension
         $container->setParameter('shinage.player.remote.host', $config['remote']['host']);
         $container->setParameter('shinage.player.remote.base_path', $config['remote']['base_path']);
         $container->setParameter('shinage.player.remote.controllers', $config['remote']['controller']);
+        $container->setParameter('shinage.player.uuid', $config['uuid']);
     }
 }

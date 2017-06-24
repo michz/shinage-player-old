@@ -13,12 +13,14 @@ services:
   shinage.player.remote.heartbeat:
     class: mztx\ShinagePlayerBundle\Service\Heartbeat
     arguments:
+      $uuid: "%shinage.player.uuid%"
       $urlBuilder: "@shinage.player.url_builder"
 
   shinage.player.local_scheduler:
     class: mztx\ShinagePlayerBundle\Service\LocalScheduler
     arguments:
       $localProvider: "@shinage.player.local_presentation_provider"
+      $heartbeat: "@shinage.player.remote.heartbeat"
 
   shinage.player.local_presentation_loader:
     class: mztx\ShinagePlayerBundle\Service\LocalPresentationLoader

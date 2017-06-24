@@ -17,11 +17,13 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('uuid')->end()
                 ->arrayNode('local')
                     ->children()
+                        ->booleanNode('enabled')->end()
                         ->scalarNode('path')->end()
                     ->end() // children of local
                 ->end() // local
                 ->arrayNode('remote')
                     ->children()
+                        ->booleanNode('enabled')->end()
                         ->scalarNode('host')->end()
                         ->enumNode('protocol')
                             ->values(['http', 'https'])
