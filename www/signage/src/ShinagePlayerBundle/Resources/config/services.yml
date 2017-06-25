@@ -10,6 +10,12 @@ services:
       $basePath: "%shinage.player.remote.base_path%"
       $controllers: "%shinage.player.remote.controllers%"
 
+  shinage.player.remote:
+    class: mztx\ShinagePlayerBundle\Service\Remote
+    arguments:
+      $uuid: "%shinage.player.uuid%"
+      $urlBuilder: "@shinage.player.url_builder"
+
   shinage.player.remote.heartbeat:
     class: mztx\ShinagePlayerBundle\Service\Heartbeat
     arguments:
@@ -21,6 +27,7 @@ services:
     arguments:
       $localProvider: "@shinage.player.local_presentation_provider"
       $heartbeat: "@shinage.player.remote.heartbeat"
+      $remote: "@shinage.player.remote"
 
   shinage.player.local_presentation_loader:
     class: mztx\ShinagePlayerBundle\Service\LocalPresentationLoader

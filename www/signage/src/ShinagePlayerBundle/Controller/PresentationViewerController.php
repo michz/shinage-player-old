@@ -58,6 +58,13 @@ class PresentationViewerController extends Controller
         return new Response($data, 200, ['Content-type' => $mime]);
     }
 
+    public function remoteAction(Request $request, $id)
+    {
+        $presentation = $this->container->get('shinage.player.remote')->getPresentation($id);
+        return new Response($presentation);
+    }
+
+
     public function testAction(Request $request)
     {
         $slide1 = new \stdClass();

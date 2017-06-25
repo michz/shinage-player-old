@@ -14,14 +14,18 @@ class LocalScheduler
     /** @var Heartbeat */
     protected $heartbeat;
 
+    /** @var Remote */
+    protected $remote;
+
     /**
      * @param LocalPresentationProvider $localProvider
      * @param Heartbeat $heartbeat
      */
-    public function __construct(LocalPresentationProvider $localProvider, Heartbeat $heartbeat)
+    public function __construct(LocalPresentationProvider $localProvider, Heartbeat $heartbeat, Remote $remote)
     {
         $this->localProvider = $localProvider;
         $this->heartbeat = $heartbeat;
+        $this->remote = $remote;
     }
 
     /**
@@ -31,7 +35,7 @@ class LocalScheduler
     public function getCurrentPresentation()
     {
         // First check if we can play a local presentation
-        // @TODO check if local presentations are enabled/disabled
+        // @TODO check if local presentations are enabled/disabled in config
         $localPresentations = $this->localProvider->getPresentationList();
 
         if (!empty($localPresentations)) {
@@ -40,12 +44,16 @@ class LocalScheduler
         }
 
         // Now check if we can play a remote presentation
-        // @TODO Heartbeat
+        // @TODO Check if remote presentations are enabled/disabled in config
         try {
             /** @var HeartbeatAnswer $heartbeatAnswer */
             $heartbeatAnswer = $this->heartbeat->beat();
             if (!empty($heartbeatAnswer->presentation)) {
-                // @TODO Fetch presentation from remote
+                // Show remote presentation.
+                $current = new CurrentPresentation();
+                $current->lastModified = 123; // @TODO implement in remote heartbeat and insert here
+                $current->url = '/p/remote/'.$heartbeatAnswer->presentation;
+                return $current;
             }
         } catch (\Exception $ex) {
             // @TODO Log the error somehow.
