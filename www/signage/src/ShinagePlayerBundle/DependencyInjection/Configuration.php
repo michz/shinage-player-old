@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('controller')
                             ->children()
                                 ->scalarNode('heartbeat')->end()
-                                ->scalarNode('current')->end()
+                                ->scalarNode('presentation')->end()
                                 ->scalarNode('asset')->end()
                                 ->scalarNode('screenshot')->end()
                             ->end()

@@ -16,7 +16,7 @@ shinage_player:
     base_path: "/"
     controller:
       heartbeat: "/screen-remote/heartbeat/%s"
-      current: "/screen-remote/client/%s"
+      presentation: "/screen-remote/presentation/%d"
       asset: "/screen-remote/client-file/%s"
       screenshot: "/screen-remote/upload-screenshot"
 
