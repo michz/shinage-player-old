@@ -1,6 +1,22 @@
 framework:
-    secret: "klsdfgisezo75ctzno4789zto8e7sfmcsx"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
+  secret: "klsdfgisezo75ctzno4789zto8e7sfmcsx"
+  router:
+    resource: "%kernel.root_dir%/config/routing.yml"
+    strict_requirements: ~
+
+shinage_player:
+  uuid: "b13eaa78-e7af-4445-b725-3d535105bad7"
+  local:
+    enabled: true
+    path: "/mnt/usb"
+  remote:
+    enabled: true
+    host: "10.251.0.101"
+    protocol: "http"
+    base_path: "/"
+    controller:
+      heartbeat: "/screen-remote/heartbeat/%s"
+      presentation: "/screen-remote/presentation/%d"
+      asset: "/screen-remote/client-file/%s"
+      screenshot: "/screen-remote/upload-screenshot"
 

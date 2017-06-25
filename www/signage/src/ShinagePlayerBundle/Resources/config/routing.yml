@@ -21,3 +21,7 @@ shinage.player.presentation.local:
 shinage.player.file.local:
     path:     /f/local/{presentation}/{file}
     defaults: { _controller: ShinagePlayerBundle:PresentationViewer:localFile }
+
+shinage.player.presentation.remote:
+    path:     /p/remote/{id}
+    defaults: { _controller: ShinagePlayerBundle:PresentationViewer:remote }

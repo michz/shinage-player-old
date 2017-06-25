@@ -4,6 +4,7 @@ namespace mztx\ShinagePlayerBundle\Controller;
 use mztx\ShinagePlayerBundle\Entity\CurrentPresentation;
 use mztx\ShinagePlayerBundle\Service\LocalPresentationLoader;
 use mztx\ShinagePlayerBundle\Service\LocalScheduler;
+use mztx\ShinagePlayerBundle\Service\UrlBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,6 +57,13 @@ class PresentationViewerController extends Controller
 
         return new Response($data, 200, ['Content-type' => $mime]);
     }
+
+    public function remoteAction(Request $request, $id)
+    {
+        $presentation = $this->container->get('shinage.player.remote')->getPresentation($id);
+        return new Response($presentation);
+    }
+
 
     public function testAction(Request $request)
     {

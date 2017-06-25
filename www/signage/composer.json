@@ -5,12 +5,18 @@
   "description": "A php based in-browser-running player for shinage digital signage applications.",
   "require": {
     "php": ">=7.0",
+    "guzzlehttp/guzzle": "@stable",
     "symfony/console": "@stable",
     "symfony/framework-bundle": "@stable",
     "symfony/http-kernel": "@stable",
+    "symfony/property-access": "@stable",
     "symfony/routing": "@stable",
+    "symfony/serializer": "@stable",
     "symfony/templating": "@stable",
     "symfony/yaml": "@stable"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
   },
   "autoload": {
     "psr-4": {

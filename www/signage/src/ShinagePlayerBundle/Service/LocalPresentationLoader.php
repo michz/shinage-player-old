@@ -18,7 +18,7 @@ class LocalPresentationLoader
     private static $EXT_VECTOR   = array('svg');
 
     /** @var string */
-    protected $basePath = '/mnt/usb';
+    protected $basePath = '';
 
     /** @var Kernel */
     protected $kernel;

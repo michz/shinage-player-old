@@ -18,7 +18,7 @@ class LocalPresentationProvider
     protected $kernel;
 
     /** @var string */
-    protected $basePath;
+    protected $basePath = '';
 
     /** @var LocalPresentationLoader */
     protected $presentationLoader;
@@ -73,8 +73,8 @@ class LocalPresentationProvider
 
             $absolutePath = $fileInfo->getRealPath();
             if (strpos($fileInfo->getFilename(), 'usbhd-') === 0 &&
-                !file_exists($absolutePath . '/signage_ignore') &&
-                !file_exists($absolutePath . '/signage_ignore.txt') &&
+                !file_exists($absolutePath . '/shignage_ignore') &&
+                !file_exists($absolutePath . '/shignage_ignore.txt') &&
                 self::containsPlayableDirectoryContents($absolutePath)) {
                 $this->cachedDrives[] = $fileInfo->getFilename();
             }
