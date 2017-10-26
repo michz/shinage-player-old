@@ -9,7 +9,7 @@ function PresentationLoader() {
     this.check = function() {
         $.ajax('/current', {
             method: 'get',
-            dataType: 'json',
+            dataType: 'jsonp',
             success: $.proxy(function(data) {
                 if (data.lastModified == undefined || data.url == undefined) {
                     return;
@@ -30,7 +30,7 @@ function PresentationLoader() {
     this.load = function(url) {
         $.ajax(url, {
             method: 'get',
-            dataType: 'json',
+            dataType: 'jsonp',
             success: $.proxy(function(data) {
                 this.clear();
 

@@ -4,3 +4,9 @@ vendor/
 var/logs/
 var/cache/
 
+# node/npm/grunt/assets
+node_modules/
+
+web/assets/js/
+web/assets/css/
+
