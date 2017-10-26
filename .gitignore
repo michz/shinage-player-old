@@ -45,3 +45,6 @@
 *.swp
 *.swo
 *~
+
+# node/npm
+node_modules/
