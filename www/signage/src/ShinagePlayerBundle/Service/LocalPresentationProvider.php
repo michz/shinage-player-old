@@ -62,6 +62,10 @@ class LocalPresentationProvider
             return $this->cachedDrives;
         }
         $this->cachedDrives = [];
+
+        if (!is_dir($this->basePath)) {
+            return [];
+        }
         $it = new \DirectoryIterator($this->basePath);
 
         /** @var \SplFileInfo $fileInfo */
