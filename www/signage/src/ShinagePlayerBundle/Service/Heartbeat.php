@@ -34,7 +34,7 @@ class Heartbeat
         $url = $this->urlBuilder->getControllerUrl('heartbeat', $this->uuid);
 
         try {
-            $client = new \GuzzleHttp\Client();
+            $client = new \GuzzleHttp\Client(['connect_timeout' => 5]);
             $res = $client->request('GET', $url);
 
             $answerJson = $res->getBody();
