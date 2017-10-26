@@ -24,7 +24,7 @@ class PresentationViewerController extends Controller
         $current->lastModified = 123;
         $current->url = '/p/test';
 
-        return new Response(json_encode($current));
+        return $this->returnJsonp($current, $request);
     }
 
     public function splashAction(Request $request)
@@ -43,7 +43,7 @@ class PresentationViewerController extends Controller
         $presentation->settings = new \stdClass();
         $presentation->settings->backgroundColor = '#000';
 
-        return new Response(json_encode($presentation));
+        return $this->returnJsonp($presentation, $request);
     }
 
     public function localAction(Request $request, $name)
@@ -51,7 +51,7 @@ class PresentationViewerController extends Controller
         /** @var LocalPresentationLoader $loader */
         $loader = $this->get('shinage.player.local_presentation_loader');
         $presentation = $loader->getByName($name);
-        return new Response(json_encode($presentation));
+        return $this->returnJsonp($presentation, $request);
     }
 
     public function localFileAction(Request $request, $presentation, $file)
@@ -67,7 +67,7 @@ class PresentationViewerController extends Controller
     public function remoteAction(Request $request, $id)
     {
         $presentation = $this->get('shinage.player.remote')->getPresentation($id);
-        return new Response($presentation);
+        return $this->returnJsonp($presentation, $request);
     }
 
 
@@ -117,6 +117,12 @@ class PresentationViewerController extends Controller
         $presentation->settings = new \stdClass();
         $presentation->settings->backgroundColor = '#000';
 
-        return new Response(json_encode($presentation));
+        return $this->returnJsonp($presentation, $request);
+    }
+
+    protected function returnJsonp($obj, Request $request)
+    {
+        $callback = $request->get('callback');
+        return new Response($callback.'('.json_encode($obj).")\n");
     }
 }
