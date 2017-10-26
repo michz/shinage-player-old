@@ -23,3 +23,7 @@ body {
     object-fit: contain; /* fancy CSS3! */
 }
 
+.slide.web iframe {
+    width: 100%;
+    height: 100%;
+}
