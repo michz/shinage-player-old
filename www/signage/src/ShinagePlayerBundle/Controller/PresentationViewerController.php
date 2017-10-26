@@ -15,9 +15,15 @@ class PresentationViewerController extends Controller
     public function currentAction(Request $request)
     {
         /** @var LocalScheduler $scheduler */
-        $scheduler = $this->container->get('shinage.player.local_scheduler');
+        $scheduler = $this->get('shinage.player.local_scheduler');
         /** @var CurrentPresentation $current */
         $current = $scheduler->getCurrentPresentation();
+
+        // No presentation found. Show splash.
+        $current = new CurrentPresentation();
+        $current->lastModified = 123;
+        $current->url = '/p/test';
+
         return new Response(json_encode($current));
     }
 
@@ -60,7 +66,7 @@ class PresentationViewerController extends Controller
 
     public function remoteAction(Request $request, $id)
     {
-        $presentation = $this->container->get('shinage.player.remote')->getPresentation($id);
+        $presentation = $this->get('shinage.player.remote')->getPresentation($id);
         return new Response($presentation);
     }
 
@@ -96,9 +102,17 @@ class PresentationViewerController extends Controller
         $slide4->src = 'https://www.w3schools.com/html/mov_bbb.mp4';
         // EXAMPLE VIDEO: Video courtesy of (https://www.bigbuckbunny.org/) (Big Buck Bunny)
 
+        $slide5 = new \stdClass();
+        $slide5->type = 'Web';
+        $slide5->title = 'Test-Slide 5';
+        $slide5->duration = 10000;
+        $slide5->transition = 'none';
+        $slide5->src = 'http://www.mztx.de/';
+        // EXAMPLE VIDEO: Video courtesy of (https://www.bigbuckbunny.org/) (Big Buck Bunny)
+
         $presentation = new \stdClass();
         $presentation->slides = [
-            $slide1, $slide2, $slide3, $slide4
+            $slide1, $slide2, $slide3, /*$slide4*/ $slide5
         ];
         $presentation->settings = new \stdClass();
         $presentation->settings->backgroundColor = '#000';
