@@ -11,7 +11,7 @@ shinage_player:
     path: "/mnt/usb"
   remote:
     enabled: true
-    host: "10.251.0.101"
+    host: "127.0.0.1:8001"
     protocol: "http"
     base_path: "/"
     controller:

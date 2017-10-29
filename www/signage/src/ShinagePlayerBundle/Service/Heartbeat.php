@@ -37,7 +37,7 @@ class Heartbeat
             $client = new \GuzzleHttp\Client(['connect_timeout' => 5]);
             $res = $client->request('GET', $url);
 
-            $answerJson = $res->getBody();
+            $answerJson = $res->getBody()->getContents();
             #$answerObject = \GuzzleHttp\json_decode($answerJson);
 
             $encoders = array(new JsonEncoder());

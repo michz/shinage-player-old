@@ -35,12 +35,15 @@ class Remote
     public function getPresentation($id)
     {
         $url = $this->urlBuilder->getControllerUrl('presentation', $id);
+        if (isset($_GET['callback'])) {
+            $url .= '?callback='.$_GET['callback'];
+        }
 
         try {
             $client = new \GuzzleHttp\Client();
             $res = $client->request('GET', $url);
 
-            $answerJson = $res->getBody();
+            $answerJson = $res->getBody()->getContents();
             return $answerJson;
         } catch (ClientException $ex) {
             return '{"status": "error", "code": "'.$ex->getResponse()->getStatusCode().

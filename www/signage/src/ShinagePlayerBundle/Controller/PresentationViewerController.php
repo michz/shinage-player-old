@@ -19,11 +19,6 @@ class PresentationViewerController extends Controller
         /** @var CurrentPresentation $current */
         $current = $scheduler->getCurrentPresentation();
 
-        // No presentation found. Show splash.
-        $current = new CurrentPresentation();
-        $current->lastModified = 123;
-        $current->url = '/p/test';
-
         return $this->returnJsonp($current, $request);
     }
 
@@ -67,7 +62,7 @@ class PresentationViewerController extends Controller
     public function remoteAction(Request $request, $id)
     {
         $presentation = $this->get('shinage.player.remote')->getPresentation($id);
-        return $this->returnJsonp($presentation, $request);
+        return new Response($presentation);
     }
 
 

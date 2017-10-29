@@ -5,6 +5,7 @@
 function PresentationLoader() {
     this.currentUrl = '';
     this.currentLastModified = 0;
+    this.recheckTimeout = 60000;
 
     this.check = function() {
         $.ajax('/current', {
@@ -24,7 +25,7 @@ function PresentationLoader() {
                 this.load(this.currentUrl);
             }, this)
         });
-        setTimeout($.proxy(this.check, this), 10000);
+        setTimeout($.proxy(this.check, this), this.recheckTimeout);
     };
 
     this.load = function(url) {

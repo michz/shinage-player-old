@@ -17,6 +17,12 @@ class LocalScheduler
     /** @var Remote */
     protected $remote;
 
+    /** @var bool */
+    protected $enabledLocal = true;
+
+    /** @var bool */
+    protected $enabledRemote = true;
+
     /**
      * @param LocalPresentationProvider $localProvider
      * @param Heartbeat $heartbeat
@@ -51,7 +57,7 @@ class LocalScheduler
             if (!empty($heartbeatAnswer->presentation)) {
                 // Show remote presentation.
                 $current = new CurrentPresentation();
-                $current->lastModified = 123; // @TODO implement in remote heartbeat and insert here
+                $current->lastModified = $heartbeatAnswer->last_modified;
                 $current->url = '/p/remote/'.$heartbeatAnswer->presentation;
                 return $current;
             }

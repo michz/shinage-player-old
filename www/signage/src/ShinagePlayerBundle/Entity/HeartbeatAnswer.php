@@ -8,4 +8,5 @@ class HeartbeatAnswer
     public $screen_status    = '';
     public $connect_code     = '';
     public $presentation     = '';
+    public $last_modified    = '';
 }
