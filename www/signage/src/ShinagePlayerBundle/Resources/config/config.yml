@@ -1,4 +1,0 @@
-imports:
-    - { resource: services.yml }
-
-#shinageplayer:

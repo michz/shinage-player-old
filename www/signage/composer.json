@@ -5,6 +5,7 @@
   "description": "A php based in-browser-running player for shinage digital signage applications.",
   "require": {
     "php": ">=7.0",
+    "mztx/shinage-player-bundle": "dev-master",
     "guzzlehttp/guzzle": "@stable",
     "symfony/console": "@stable",
     "symfony/framework-bundle": "@stable",
@@ -21,7 +22,6 @@
   },
   "autoload": {
     "psr-4": {
-      "mztx\\ShinagePlayerBundle\\": "src/ShinagePlayerBundle/",
       "mztx\\ShinageDiagnosticsBundle\\": "src/ShinageDiagnosticsBundle/",
       "": "src/"
     },

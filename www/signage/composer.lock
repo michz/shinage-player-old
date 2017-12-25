@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9245a976037fe00f530f8d5f3cb86c32",
+    "content-hash": "3a07117f900aa3745718305015947556",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -256,6 +256,58 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "mztx/shinage-player-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michz/shinage-player-bundle.git",
+                "reference": "5450c78667fa2eafb6e462cf7a3a048863ecbdf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michz/shinage-player-bundle/zipball/5450c78667fa2eafb6e462cf7a3a048863ecbdf6",
+                "reference": "5450c78667fa2eafb6e462cf7a3a048863ecbdf6",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "@stable",
+                "php": ">=7.0",
+                "symfony/console": "@stable",
+                "symfony/framework-bundle": "@stable",
+                "symfony/http-kernel": "@stable",
+                "symfony/property-access": "@stable",
+                "symfony/routing": "@stable",
+                "symfony/serializer": "@stable",
+                "symfony/templating": "@stable",
+                "symfony/yaml": "@stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1",
+                "symfony/web-server-bundle": "^3.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "mztx\\ShinagePlayerBundle\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Zapf",
+                    "email": "m.zapf@mztx.de",
+                    "homepage": "https://www.mztx.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Symfony bundle for digital signage player Shinage.",
+            "homepage": "https://shinage.mztx.de",
+            "time": "2017-12-25T19:25:03+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3458,6 +3510,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mztx/shinage-player-bundle": 20,
         "guzzlehttp/guzzle": 0,
         "symfony/console": 0,
         "symfony/framework-bundle": 0,
