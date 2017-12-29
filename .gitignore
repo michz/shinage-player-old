@@ -40,7 +40,10 @@
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
 
+# bundles' assets
+www/signage/web/bundles/
 
+.web-server-pid
 .idea/
 *.swp
 *.swo

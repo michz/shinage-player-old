@@ -1,0 +1,4 @@
+services:
+  shinage.diagnostics.system:
+    class: mztx\ShinageDiagnosticsBundle\Service\System
+
