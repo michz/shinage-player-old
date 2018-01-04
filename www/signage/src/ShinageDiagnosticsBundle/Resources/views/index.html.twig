@@ -28,12 +28,36 @@
             <a class="item" data-tab="tab-actions">Aktionen</a>
         </div>
         <div class="ui bottom attached tab segment active" data-tab="tab-load">
-            <p>
-                Loadavg:
-                <span id="loadavg1min"></span> (1min) &nbsp;&nbsp;&nbsp;
-                <span id="loadavg5min"></span> (5min) &nbsp;&nbsp;&nbsp;
-                <span id="loadavg15min"></span> (15min) &nbsp;&nbsp;&nbsp;
-            </p>
+            <h2 class="ui horizontal divider">Loadavg</h2>
+            <div class="ui statistics">
+                <div class="statistic">
+                    <div class="value" id="loadavg1min">
+                        0
+                    </div>
+                    <div class="label">
+                        1min
+                    </div>
+                </div>
+                <div class="statistic">
+                    <div class="value" id="loadavg5min">
+                        0
+                    </div>
+                    <div class="label">
+                        5min
+                    </div>
+                </div>
+                <div class="statistic">
+                    <div class="value" id="loadavg15min">
+                        0
+                    </div>
+                    <div class="label">
+                        15min
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="ui horizontal divider">Memory</h2>
+
             <div class="ui progress" id="ram" data-percent="0">
                 <div class="bar">
                     <div class="progress"></div>
