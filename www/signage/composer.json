@@ -14,7 +14,9 @@
     "symfony/routing": "@stable",
     "symfony/serializer": "@stable",
     "symfony/templating": "@stable",
-    "symfony/yaml": "@stable"
+    "symfony/yaml": "@stable",
+    "symfony/twig-bundle": "^3.3",
+    "symfony/asset": "^3.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.1",
