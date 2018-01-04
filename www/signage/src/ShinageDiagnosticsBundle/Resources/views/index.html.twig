@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Shinage Diagnostics{% block title %}{% endblock %}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/shinagediagnostics/semantic-ui/semantic.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/shinagediagnostics/css/reset.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/shinagediagnostics/css/shindiag.css') }}" />
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<div id="mainWrapper">
+    {# main content #}
+    {% block body %}{% endblock %}
+
+    <div class="ui container">
+        <div class="ui top attached tabular menu">
+            <a class="item active" data-tab="tab-load">Auslastung</a>
+            <a class="item" data-tab="tab-remote">Remote Informationen</a>
+            <a class="item" data-tab="tab-local">Lokale Präsentationen/Speichermedien</a>
+            <a class="item" data-tab="tab-actions">Aktionen</a>
+        </div>
+        <div class="ui bottom attached tab segment active" data-tab="tab-load">
+            <p>
+                Loadavg:
+                <span id="loadavg1min"></span> (1min) &nbsp;&nbsp;&nbsp;
+                <span id="loadavg5min"></span> (5min) &nbsp;&nbsp;&nbsp;
+                <span id="loadavg15min"></span> (15min) &nbsp;&nbsp;&nbsp;
+            </p>
+            <div class="ui progress" id="ram" data-percent="0">
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="label">RAM (used)</div>
+            </div>
+            <div class="ui progress" id="swap" data-percent="0">
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="label">SWAP (used)</div>
+            </div>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="tab-remote">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="four wide column">Screen UUID:</div>
+                    <div class="eight wide column">{{ uuid }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Protocol:</div>
+                    <div class="eight wide column">{{ remote_protocol }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Host:</div>
+                    <div class="eight wide column">{{ remote_host }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Base Path:</div>
+                    <div class="eight wide column">{{ remote_base }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Controller Heartbeat:</div>
+                    <div class="eight wide column">{{ remote_controllers.heartbeat }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Controller Presentation:</div>
+                    <div class="eight wide column">{{ remote_controllers.heartbeat }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Controller Asset:</div>
+                    <div class="eight wide column">{{ remote_controllers.asset }}</div>
+                </div>
+                <div class="row">
+                    <div class="four wide column">Remote Controller Screenshot Upload:</div>
+                    <div class="eight wide column">{{ remote_controllers.screenshot }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="tab-local">
+            TODO: Prüfen, ob aktiviert; angeschlossene USB-Sticks auflisten; Präsentationen auflisten
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="tab-actions">
+            <p>TODO Aktionen (Shutdown, Reboot)</p>
+            <a class="ui red button" href="{{ path('shinage.diagnostics.system.reboot') }}">Reboot</a>
+            <a class="ui red button" href="{{ path('shinage.diagnostics.system.poweroff') }}">Shutdown</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ asset('bundles/shinagediagnostics/js/lib/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('bundles/shinagediagnostics/semantic-ui/semantic.min.js') }}"></script>
+
+<script src="{{ asset('bundles/shinagediagnostics/js/lib/notify.min.js') }}"></script>
+
+<script>
+    $.notify.defaults({ autoHideDelay: 2000, showDuration: 250 });
+
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+    $.notify("{{ message }}", { className: '{{ label }}', autoHideDelay: 10000 });
+    {% endfor %}
+    {% endfor %}
+
+</script>
+
+{% block scripts %}{% endblock %}
+
+<script>
+    $(function() {
+        $('.ui.tabular .item').tab();
+        $('.ui.progress').progress();
+
+        function updateLoad() {
+            $.ajax({
+                url: '{{ path('shinage.diagnostics.system.get_load') }}',
+                method: 'get',
+                type: 'json',
+                complete: function () {
+                    setTimeout(updateLoad, 5000);
+                },
+                success: function (data) {
+                    $('#loadavg1min').html(data.LoadAvg1min);
+                    $('#loadavg5min').html(data.LoadAvg5min);
+                    $('#loadavg15min').html(data.LoadAvg15min);
+                    $('#ram').data('percent', Math.floor(100 - (data.MemAvailable / data.MemTotal) * 100));
+                    $('#swap').data('percent', Math.floor(100 - (data.SwapFree / data.SwapTotal) * 100));
+                    $('.ui.progress').progress();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        setTimeout(updateLoad, 25);
+    });
+</script>
+</body>
+</html>
