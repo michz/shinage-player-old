@@ -2,3 +2,15 @@ shinage.diagnostics.index:
     path:     /
     defaults: { _controller: ShinageDiagnosticsBundle:Index:index }
 
+shinage.diagnostics.system.poweroff:
+    path:     /system/poweroff
+    defaults: { _controller: ShinageDiagnosticsBundle:System:poweroff }
+
+shinage.diagnostics.system.reboot:
+    path:     /system/reboot
+    defaults: { _controller: ShinageDiagnosticsBundle:System:reboot }
+
+shinage.diagnostics.system.get_load:
+    path:     /system/get_load
+    defaults: { _controller: ShinageDiagnosticsBundle:System:getLoad }
+

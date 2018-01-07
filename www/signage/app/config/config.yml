@@ -3,6 +3,13 @@ framework:
   router:
     resource: "%kernel.root_dir%/config/routing.yml"
     strict_requirements: ~
+  templating:
+    engines: ['twig']
+  assets: ~
+
+twig:
+  debug:            "%kernel.debug%"
+  strict_variables: "%kernel.debug%"
 
 shinage_player:
   uuid: "00000000-0000-0000-0000-000000000000"

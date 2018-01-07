@@ -1,0 +1,15 @@
+
+html,body {
+    font-size: 10pt;
+    font-family: "Open Sans", sans-serif;
+}
+
+#mainWrapper {
+    margin-top: 1em;
+}
+
+@media (min-width: 500px) {
+    .ui.bottom.attached.tab.segment {
+        min-height: 500px;
+    }
+}
