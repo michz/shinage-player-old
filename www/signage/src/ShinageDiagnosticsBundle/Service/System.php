@@ -9,12 +9,24 @@ class System
 
     public function poweroff()
     {
-        exec("sudo /sbin/poweroff > /dev/null &");
+        exec("sudo /sbin/poweroff &", $output, $exitCode);
+        if ($exitCode !== 0) {
+            throw new \RuntimeException(
+                'Could not poweroff. '.PHP_EOL.'Exit code: '.$exitCode.PHP_EOL.PHP_EOL.
+                'Output from terminal:'.PHP_EOL.implode("\n", $output)
+            );
+        }
     }
 
     public function reboot()
     {
-        exec("sudo /sbin/reboot > /dev/null &");
+        exec("sudo /sbin/reboot &", $output, $exitCode);
+        if ($exitCode !== 0) {
+            throw new \RuntimeException(
+                'Could not reboot. '.PHP_EOL.'Exit code: '.$exitCode.PHP_EOL.PHP_EOL.
+                'Output from terminal:'.PHP_EOL.implode("\n", $output)
+            );
+        }
     }
 
     public function getLoadavg()
