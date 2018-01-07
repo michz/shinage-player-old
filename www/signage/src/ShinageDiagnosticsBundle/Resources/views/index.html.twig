@@ -23,6 +23,7 @@
     <div class="ui container">
         <div class="ui top attached tabular menu">
             <a class="item active" data-tab="tab-load">Auslastung</a>
+            <a class="item" data-tab="tab-resolution">Auflösung</a>
             <a class="item" data-tab="tab-remote">Remote Informationen</a>
             <a class="item" data-tab="tab-local">Lokale Präsentationen/Speichermedien</a>
             <a class="item" data-tab="tab-actions">Aktionen</a>
@@ -71,6 +72,10 @@
                 <div class="label">SWAP (used)</div>
             </div>
         </div>
+        <div class="ui bottom attached tab segment" data-tab="tab-resolution">
+            Auflösungen auflisten; wählbar machen; Eintrag in persistenter Datei speichern
+            (alles via xrandr)
+        </div>
         <div class="ui bottom attached tab segment" data-tab="tab-remote">
             <div class="ui grid">
                 <div class="row">
@@ -110,10 +115,28 @@
         <div class="ui bottom attached tab segment" data-tab="tab-local">
             TODO: Prüfen, ob aktiviert; angeschlossene USB-Sticks auflisten; Präsentationen auflisten
         </div>
-        <div class="ui bottom attached tab segment" data-tab="tab-actions">
-            <p>TODO Aktionen (Shutdown, Reboot)</p>
+        <div class="ui bottom attached tab segment" data-tab="tab-actions" id="tabActions">
             <a class="ui red button" href="{{ path('shinage.diagnostics.system.reboot') }}">Reboot</a>
             <a class="ui red button" href="{{ path('shinage.diagnostics.system.poweroff') }}">Shutdown</a>
+        </div>
+    </div>
+
+    <div class="ui dimmer" id="ajaxIndicator">
+        <div class="ui loader"></div>
+    </div>
+
+    <div id="errorModal" class="ui small basic test modal transition">
+        <div class="ui icon header">
+            <i class="warning sign icon"></i>
+        </div>
+        <div class="content">
+            <p>The request was not successful.</p>
+        </div>
+        <div class="actions">
+            <div class="ui red ok inverted button">
+                <i class="checkmark icon"></i>
+                OK
+            </div>
         </div>
     </div>
 </div>
@@ -164,6 +187,29 @@
             });
         }
         setTimeout(updateLoad, 25);
+
+        $('#tabActions a').on('click', function (e) {
+            $('#ajaxIndicator').addClass('active');
+            var href = $(e.currentTarget).attr('href');
+            $.ajax({
+                url: href,
+                method: 'get',
+                success: function (data) {
+
+                },
+                error: function () {
+                    $('#errorModal')
+                        .modal('setting', 'closable', false)
+                        .modal('show')
+                    ;
+                },
+                complete: function () {
+                    $('#ajaxIndicator').removeClass('active');
+                }
+            });
+            e.preventDefault();
+            return false;
+        })
     });
 </script>
 </body>
