@@ -43,6 +43,10 @@
 # bundles' assets
 www/signage/web/bundles/
 
+# vagrant
+utils/vagrant/*.log
+utils/vagrant/.vagrant
+
 .web-server-pid
 .idea/
 *.swp
