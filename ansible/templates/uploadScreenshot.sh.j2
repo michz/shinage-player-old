@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+/usr/bin/convert -thumbnail 400 $1 $1.thumb.png
+
+curl --silent \
+    -X POST -H "Content-Type: multipart/form-data" \
+    -F "screen=${SCREEN_GUID}" \
+    -F "file=@$1.thumb.png" \
+    "{{ shinage_server_url }}/screen-remote/upload-screenshot" \
+    >/dev/null

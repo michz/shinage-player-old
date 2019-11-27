@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+export XAUTHORITY=/home/{{ shinage_base_user }}/.Xauthority
+export DISPLAY=:0
+
+/usr/bin/scrot /tmp/screen.png -e "/usr/local/bin/uploadScreenshot.sh /tmp/screen.png"

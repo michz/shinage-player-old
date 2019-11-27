@@ -14,3 +14,10 @@
     value: "{{ shinage_base_swappiness }}"
     state: present
     reload: true
+
+- name: Write screen GUID into environment
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: 'SCREEN_GUID=(.*)'
+    line: "SCREEN_GUID={{ shinage_screen_guid }}"

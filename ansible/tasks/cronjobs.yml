@@ -1,9 +1,18 @@
 ---
+- name: Copy scripts for cronjobs
+  template:
+    src: "{{ item }}.j2"
+    dest: "/usr/local/bin/{{ item }}"
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - "takeScreenshot.sh"
+    - "uploadScreenshot.sh"
+
 - name: "Install screenshot cronjob"
   cron:
     name: "Upload shinage screenshot"
     minute: "*"
     hour: "*"
-    job: 'echo TODO'
-    #job: 'XAUTHORITY=/home/user/.Xauthority DISPLAY=:0 /usr/bin/scrot /tmp/screen.png -e "/usr/bin/convert -thumbnail 200 \$f \$f.thumb.png && /var/www/shinage-player/www/signage/bin/console shinage:player:screenshot:upload \$f.thumb.png"'
-
+    job: '/usr/local/bin/takeScreenshot.sh'
