@@ -30,8 +30,6 @@ shinage_system_packages:
   - hdparm
   - unattended-upgrades
 
-# @TODO Configure unattended-upgrades
-
 shinage_ui_packages:
   - x11-xserver-utils
   - unclutter
@@ -48,3 +46,4 @@ shinage_ui_packages:
   - scrot
   - imagemagick
   - chromium-browser
+  - prometheus-node-exporter
