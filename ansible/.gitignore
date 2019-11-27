@@ -1,0 +1,12 @@
+vaultpass
+*.retry
+roles/external/*
+!roles/external/.gitkeep
+
+test/.vagrant
+test/*.log
+
+*.bak
+*~
+*.swp
+*.swo

@@ -1,0 +1,30 @@
+---
+- hosts: all
+  vars_files:
+    - vars/system.yml
+
+  become: yes
+
+  tasks:
+  - name: "Generate shinage player url if in online only mode"
+    set_fact:
+      shinage_player_url: "{{ shinage_online_player_url }}?current_presentation_url={{ shinage_server_url }}/screen-remote/current-for/{{ shinage_screen_guid }}"
+    when: shinage_install_player_online_only
+  - import_tasks: tasks/packages.yml
+    when: shinage_base_install_packages
+  - import_role:
+      name: oefenweb.locales
+  - import_tasks: tasks/base.yml
+  - import_tasks: tasks/user.yml
+    when: shinage_base_create_user
+  - import_tasks: tasks/autologin_systemd.yml
+    when: shinage_base_autologin_user
+  - import_tasks: tasks/cronjobs.yml
+    when: shinage_base_install_cronjobs
+  - name: "Copy run browser script"
+    template:
+      src: run-browser.sh.j2
+      dest: /usr/local/bin/run-browser.sh
+      owner: root
+      group: root
+      mode: 0755

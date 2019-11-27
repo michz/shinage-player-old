@@ -1,0 +1,28 @@
+---
+- name: "Create user"
+  user:
+    name: "{{ shinage_base_user }}"
+    comment: "Shinage kiosk user"
+    groups:
+      - video
+      - input
+      - audio
+      - tty
+    append: yes
+    create_home: yes
+
+- name: "Configure user account for kiosk mode: .profile"
+  copy:
+    src: .profile
+    dest: "/home/{{ shinage_base_user }}/.profile"
+    owner: "{{ shinage_base_user }}"
+    group: root
+    mode: 0775
+
+- name: "Configure user account for kiosk mode: .xsession"
+  copy:
+    src: .xsession
+    dest: "/home/{{ shinage_base_user }}/.xsession"
+    owner: "{{ shinage_base_user }}"
+    group: root
+    mode: 0775

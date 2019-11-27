@@ -1,0 +1,8 @@
+---
+- name: "Configure autologin"
+  lineinfile:
+    path: /etc/systemd/system/getty.target.wants/getty@tty1.service
+    line: "ExecStart=-/sbin/agetty --autologin {{ shinage_base_user }} --noclear %I 38400 linux"
+    regexp: "^.*ExecStart=.*$"
+    state: present
+  when: shinage_base_autologin_user

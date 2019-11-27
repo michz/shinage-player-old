@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Reboot
+      shell: "sleep 2 && reboot"
+      async: 1
+      poll: 0
+
+    - name: Wait for the machine to become ready again
+      wait_for_connection:
+        connect_timeout: 20
+        sleep: 5
+        delay: 5
+        timeout: 180

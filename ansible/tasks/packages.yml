@@ -1,0 +1,20 @@
+---
+- name: "Install aptitude as package manager"
+  apt:
+    name: "aptitude"
+    update_cache: yes
+    state: latest
+    install_recommends: no
+
+- name: "Install system packages"
+  apt:
+    name: "{{ shinage_system_packages }}"
+    update_cache: yes
+    state: latest
+    install_recommends: no
+
+- name: "Install ui packages"
+  apt:
+    name: "{{ shinage_ui_packages }}"
+    state: latest
+    install_recommends: no

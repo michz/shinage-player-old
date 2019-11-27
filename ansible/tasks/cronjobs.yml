@@ -1,0 +1,9 @@
+---
+- name: "Install screenshot cronjob"
+  cron:
+    name: "Upload shinage screenshot"
+    minute: "*"
+    hour: "*"
+    job: 'echo TODO'
+    #job: 'XAUTHORITY=/home/user/.Xauthority DISPLAY=:0 /usr/bin/scrot /tmp/screen.png -e "/usr/bin/convert -thumbnail 200 \$f \$f.thumb.png && /var/www/shinage-player/www/signage/bin/console shinage:player:screenshot:upload \$f.thumb.png"'
+

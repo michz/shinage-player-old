@@ -1,0 +1,16 @@
+---
+- name: "Configure hdparm"
+  copy:
+    src: hdparm.conf
+    dest: /etc/hdparm.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: shinage_base_hdparm_disable_writecache
+
+- name: Configure swappiness
+  sysctl:
+    name: vm.swappiness
+    value: "{{ shinage_base_swappiness }}"
+    state: present
+    reload: true
